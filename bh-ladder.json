@@ -1,111 +1,37 @@
 {
+  "owner_id": 4228223,
   "event": "2024",
-  "day1_ts": 1733029200,
   "members": {
-    "1140389": {
-      "name": "Csaba Egyed",
-      "completion_day_level": {
-        "3": {
-          "2": {
-            "get_star_ts": 1733218752,
-            "star_index": 604592
-          },
-          "1": {
-            "get_star_ts": 1733208147,
-            "star_index": 555787
-          }
-        },
-        "2": {
-          "1": {
-            "star_index": 245597,
-            "get_star_ts": 1733121489
-          },
-          "2": {
-            "get_star_ts": 1733158470,
-            "star_index": 397335
-          }
-        },
-        "1": {
-          "2": {
-            "star_index": 21342,
-            "get_star_ts": 1733038207
-          },
-          "1": {
-            "star_index": 19919,
-            "get_star_ts": 1733037480
-          }
-        }
-      },
-      "stars": 6,
-      "id": 1140389,
-      "local_score": 51,
-      "last_star_ts": 1733218752,
-      "global_score": 0
-    },
-    "1051118": {
-      "name": "Dávid Nagy",
-      "stars": 8,
-      "completion_day_level": {
-        "2": {
-          "2": {
-            "star_index": 233249,
-            "get_star_ts": 1733118525
-          },
-          "1": {
-            "get_star_ts": 1733116778,
-            "star_index": 221557
-          }
-        },
-        "3": {
-          "2": {
-            "star_index": 531865,
-            "get_star_ts": 1733203634
-          },
-          "1": {
-            "star_index": 518919,
-            "get_star_ts": 1733202467
-          }
-        },
-        "4": {
-          "1": {
-            "get_star_ts": 1733298101,
-            "star_index": 848007
-          },
-          "2": {
-            "star_index": 850748,
-            "get_star_ts": 1733298893
-          }
-        },
-        "1": {
-          "2": {
-            "get_star_ts": 1733049470,
-            "star_index": 52477
-          },
-          "1": {
-            "star_index": 47068,
-            "get_star_ts": 1733047762
-          }
-        }
-      },
-      "id": 1051118,
-      "last_star_ts": 1733298893,
-      "local_score": 98,
-      "global_score": 0
-    },
     "1140949": {
-      "local_score": 77,
-      "last_star_ts": 1733292533,
-      "global_score": 0,
-      "name": "Péter Belucz",
+      "local_score": 127,
+      "id": 1140949,
+      "stars": 14,
+      "last_star_ts": 1733648082,
       "completion_day_level": {
-        "1": {
+        "6": {
           "1": {
-            "get_star_ts": 1733087062,
-            "star_index": 166406
+            "get_star_ts": 1733473618,
+            "star_index": 1302219
           },
           "2": {
-            "star_index": 167185,
-            "get_star_ts": 1733087319
+            "get_star_ts": 1733490220,
+            "star_index": 1344398
+          }
+        },
+        "7": {
+          "1": {
+            "get_star_ts": 1733605782,
+            "star_index": 1589860
+          }
+        },
+        "3": {
+          "2": {
+            "get_star_ts": 1733206964,
+            "star_index": 550681
+          },
+          "1": {
+            "star_index": 529355,
+            "get_star_ts": 1733203356
           }
         },
         "4": {
@@ -118,140 +44,522 @@
             "get_star_ts": 1733292533
           }
         },
-        "3": {
+        "1": {
           "2": {
-            "get_star_ts": 1733206964,
-            "star_index": 550681
+            "star_index": 167185,
+            "get_star_ts": 1733087319
           },
           "1": {
-            "get_star_ts": 1733203356,
-            "star_index": 529355
+            "get_star_ts": 1733087062,
+            "star_index": 166406
+          }
+        },
+        "5": {
+          "2": {
+            "get_star_ts": 1733439023,
+            "star_index": 1237179
+          },
+          "1": {
+            "star_index": 1219227,
+            "get_star_ts": 1733431893
+          }
+        },
+        "8": {
+          "1": {
+            "star_index": 1658144,
+            "get_star_ts": 1733648082
+          }
+        },
+        "2": {
+          "1": {
+            "get_star_ts": 1733120903,
+            "star_index": 243362
+          },
+          "2": {
+            "get_star_ts": 1733126336,
+            "star_index": 264760
+          }
+        }
+      },
+      "name": "Péter Belucz",
+      "global_score": 0
+    },
+    "4275886": {
+      "global_score": 0,
+      "name": "Gábor Kalmár",
+      "completion_day_level": {
+        "5": {
+          "1": {
+            "star_index": 1533367,
+            "get_star_ts": 1733580130
+          },
+          "2": {
+            "get_star_ts": 1733580764,
+            "star_index": 1534924
+          }
+        },
+        "1": {
+          "2": {
+            "star_index": 373364,
+            "get_star_ts": 1733152784
+          },
+          "1": {
+            "star_index": 117163,
+            "get_star_ts": 1733071606
+          }
+        },
+        "6": {
+          "1": {
+            "star_index": 1540564,
+            "get_star_ts": 1733583139
+          }
+        },
+        "2": {
+          "1": {
+            "star_index": 383842,
+            "get_star_ts": 1733155264
+          },
+          "2": {
+            "get_star_ts": 1733156840,
+            "star_index": 390451
+          }
+        },
+        "3": {
+          "1": {
+            "get_star_ts": 1733245494,
+            "star_index": 703638
+          },
+          "2": {
+            "get_star_ts": 1733325800,
+            "star_index": 936903
+          }
+        },
+        "4": {
+          "2": {
+            "get_star_ts": 1733404167,
+            "star_index": 1144437
+          },
+          "1": {
+            "get_star_ts": 1733402503,
+            "star_index": 1140003
+          }
+        }
+      },
+      "last_star_ts": 1733583139,
+      "stars": 11,
+      "local_score": 38,
+      "id": 4275886
+    },
+    "4293625": {
+      "completion_day_level": {
+        "7": {
+          "1": {
+            "star_index": 1474417,
+            "get_star_ts": 1733555419
+          },
+          "2": {
+            "get_star_ts": 1733564843,
+            "star_index": 1495418
+          }
+        },
+        "4": {
+          "2": {
+            "get_star_ts": 1733325197,
+            "star_index": 934932
+          },
+          "1": {
+            "star_index": 914984,
+            "get_star_ts": 1733318715
+          }
+        },
+        "3": {
+          "1": {
+            "star_index": 529053,
+            "get_star_ts": 1733203327
+          },
+          "2": {
+            "get_star_ts": 1733210431,
+            "star_index": 565626
+          }
+        },
+        "5": {
+          "2": {
+            "get_star_ts": 1733402436,
+            "star_index": 1139795
+          },
+          "1": {
+            "star_index": 1094547,
+            "get_star_ts": 1733386808
+          }
+        },
+        "1": {
+          "1": {
+            "get_star_ts": 1733048193,
+            "star_index": 48461
+          },
+          "2": {
+            "get_star_ts": 1733048903,
+            "star_index": 50687
+          }
+        },
+        "6": {
+          "1": {
+            "star_index": 1309479,
+            "get_star_ts": 1733476272
+          },
+          "2": {
+            "star_index": 1347764,
+            "get_star_ts": 1733491614
           }
         },
         "2": {
           "2": {
-            "get_star_ts": 1733126336,
-            "star_index": 264760
+            "star_index": 385311,
+            "get_star_ts": 1733155612
           },
           "1": {
-            "star_index": 243362,
-            "get_star_ts": 1733120903
+            "get_star_ts": 1733117148,
+            "star_index": 224793
           }
         }
       },
-      "stars": 8,
-      "id": 1140949
+      "name": "Tibor Juhász",
+      "global_score": 0,
+      "id": 4293625,
+      "local_score": 138,
+      "last_star_ts": 1733564843,
+      "stars": 14
     },
-    "4293664": {
-      "id": 4293664,
-      "stars": 7,
+    "4286400": {
+      "stars": 0,
+      "last_star_ts": 0,
+      "local_score": 0,
+      "id": 4286400,
+      "global_score": 0,
+      "completion_day_level": {},
+      "name": "Tibor Beke-Kósa"
+    },
+    "4290723": {
+      "global_score": 0,
       "completion_day_level": {
-        "1": {
+        "3": {
           "1": {
-            "star_index": 88138,
-            "get_star_ts": 1733061447
+            "get_star_ts": 1733205724,
+            "star_index": 544818
           },
           "2": {
-            "star_index": 89855,
-            "get_star_ts": 1733062046
+            "get_star_ts": 1733208081,
+            "star_index": 555515
+          }
+        },
+        "2": {
+          "1": {
+            "star_index": 239636,
+            "get_star_ts": 1733119939
+          },
+          "2": {
+            "star_index": 254945,
+            "get_star_ts": 1733123928
+          }
+        },
+        "1": {
+          "2": {
+            "get_star_ts": 1733049262,
+            "star_index": 51801
+          },
+          "1": {
+            "get_star_ts": 1733045729,
+            "star_index": 40706
+          }
+        }
+      },
+      "name": "Süte Tamás",
+      "stars": 6,
+      "last_star_ts": 1733208081,
+      "local_score": 59,
+      "id": 4290723
+    },
+    "1140389": {
+      "global_score": 0,
+      "completion_day_level": {
+        "7": {
+          "2": {
+            "get_star_ts": 1733561836,
+            "star_index": 1488207
+          },
+          "1": {
+            "star_index": 1479793,
+            "get_star_ts": 1733558053
+          }
+        },
+        "3": {
+          "2": {
+            "get_star_ts": 1733218752,
+            "star_index": 604592
+          },
+          "1": {
+            "star_index": 555787,
+            "get_star_ts": 1733208147
           }
         },
         "4": {
           "1": {
-            "get_star_ts": 1733298009,
-            "star_index": 847689
+            "star_index": 890015,
+            "get_star_ts": 1733310129
+          },
+          "2": {
+            "star_index": 900454,
+            "get_star_ts": 1733313767
           }
         },
-        "3": {
+        "1": {
           "2": {
-            "star_index": 546900,
-            "get_star_ts": 1733206148
+            "star_index": 21342,
+            "get_star_ts": 1733038207
           },
           "1": {
-            "star_index": 534039,
-            "get_star_ts": 1733203900
+            "star_index": 19919,
+            "get_star_ts": 1733037480
+          }
+        },
+        "5": {
+          "2": {
+            "star_index": 1230053,
+            "get_star_ts": 1733435890
+          },
+          "1": {
+            "get_star_ts": 1733397721,
+            "star_index": 1127855
           }
         },
         "2": {
           "2": {
-            "star_index": 291659,
-            "get_star_ts": 1733132277
+            "get_star_ts": 1733158470,
+            "star_index": 397335
           },
           "1": {
-            "star_index": 283692,
-            "get_star_ts": 1733130554
+            "get_star_ts": 1733121489,
+            "star_index": 245597
+          }
+        },
+        "6": {
+          "1": {
+            "star_index": 1331493,
+            "get_star_ts": 1733484788
+          },
+          "2": {
+            "star_index": 1424015,
+            "get_star_ts": 1733524257
           }
         }
       },
-      "name": "Ádám Ling",
-      "global_score": 0,
-      "local_score": 62,
-      "last_star_ts": 1733298009
+      "name": "Csaba Egyed",
+      "last_star_ts": 1733561836,
+      "stars": 14,
+      "local_score": 123,
+      "id": 1140389
     },
-    "2455297": {
-      "stars": 6,
+    "4228223": {
       "completion_day_level": {
+        "6": {
+          "1": {
+            "star_index": 1304082,
+            "get_star_ts": 1733474304
+          },
+          "2": {
+            "star_index": 1418759,
+            "get_star_ts": 1733521669
+          }
+        },
+        "7": {
+          "2": {
+            "star_index": 1469813,
+            "get_star_ts": 1733553231
+          },
+          "1": {
+            "get_star_ts": 1733549760,
+            "star_index": 1459309
+          }
+        },
+        "4": {
+          "1": {
+            "get_star_ts": 1733295166,
+            "star_index": 838133
+          },
+          "2": {
+            "get_star_ts": 1733296590,
+            "star_index": 842830
+          }
+        },
+        "3": {
+          "2": {
+            "star_index": 691489,
+            "get_star_ts": 1733242182
+          },
+          "1": {
+            "get_star_ts": 1733241781,
+            "star_index": 690066
+          }
+        },
+        "5": {
+          "1": {
+            "star_index": 1206893,
+            "get_star_ts": 1733427500
+          },
+          "2": {
+            "get_star_ts": 1733433389,
+            "star_index": 1223386
+          }
+        },
+        "1": {
+          "2": {
+            "star_index": 1671,
+            "get_star_ts": 1733030191
+          },
+          "1": {
+            "star_index": 0,
+            "get_star_ts": 1733029980
+          }
+        },
+        "8": {
+          "2": {
+            "get_star_ts": 1733636959,
+            "star_index": 1634581
+          },
+          "1": {
+            "get_star_ts": 1733636187,
+            "star_index": 1631444
+          }
+        },
+        "2": {
+          "2": {
+            "get_star_ts": 1733132852,
+            "star_index": 294404
+          },
+          "1": {
+            "star_index": 291100,
+            "get_star_ts": 1733132156
+          }
+        }
+      },
+      "name": "Krisztián Kuntner",
+      "global_score": 0,
+      "id": 4228223,
+      "local_score": 172,
+      "stars": 16,
+      "last_star_ts": 1733636959
+    },
+    "1051118": {
+      "name": "Dávid Nagy",
+      "completion_day_level": {
+        "7": {
+          "1": {
+            "star_index": 1464621,
+            "get_star_ts": 1733551215
+          },
+          "2": {
+            "star_index": 1465936,
+            "get_star_ts": 1733551666
+          }
+        },
+        "4": {
+          "1": {
+            "get_star_ts": 1733298101,
+            "star_index": 848007
+          },
+          "2": {
+            "star_index": 850748,
+            "get_star_ts": 1733298893
+          }
+        },
+        "3": {
+          "2": {
+            "star_index": 531865,
+            "get_star_ts": 1733203634
+          },
+          "1": {
+            "star_index": 518919,
+            "get_star_ts": 1733202467
+          }
+        },
+        "6": {
+          "2": {
+            "get_star_ts": 1733475741,
+            "star_index": 1307997
+          },
+          "1": {
+            "get_star_ts": 1733463535,
+            "star_index": 1273441
+          }
+        },
         "1": {
           "1": {
-            "star_index": 361537,
-            "get_star_ts": 1733149904
+            "get_star_ts": 1733047762,
+            "star_index": 47068
           },
           "2": {
-            "star_index": 364782,
-            "get_star_ts": 1733150693
+            "star_index": 52477,
+            "get_star_ts": 1733049470
+          }
+        },
+        "5": {
+          "2": {
+            "get_star_ts": 1733380044,
+            "star_index": 1073356
+          },
+          "1": {
+            "get_star_ts": 1733377510,
+            "star_index": 1062913
+          }
+        },
+        "8": {
+          "2": {
+            "get_star_ts": 1733639046,
+            "star_index": 1640519
+          },
+          "1": {
+            "get_star_ts": 1733637998,
+            "star_index": 1637984
           }
         },
         "2": {
-          "1": {
-            "get_star_ts": 1733154051,
-            "star_index": 378679
-          },
           "2": {
-            "star_index": 420869,
-            "get_star_ts": 1733164329
-          }
-        },
-        "3": {
-          "1": {
-            "star_index": 570926,
-            "get_star_ts": 1733211620
+            "star_index": 233249,
+            "get_star_ts": 1733118525
           },
-          "2": {
-            "get_star_ts": 1733214432,
-            "star_index": 584400
+          "1": {
+            "star_index": 221557,
+            "get_star_ts": 1733116778
           }
         }
       },
-      "name": "kfogas-sz",
-      "id": 2455297,
-      "local_score": 24,
-      "last_star_ts": 1733214432,
-      "global_score": 0
+      "global_score": 0,
+      "local_score": 212,
+      "id": 1051118,
+      "stars": 16,
+      "last_star_ts": 1733639046
     },
     "4293616": {
-      "local_score": 114,
-      "last_star_ts": 1733292054,
-      "global_score": 0,
       "name": "Szörényi Miklós",
       "completion_day_level": {
-        "1": {
-          "2": {
-            "star_index": 21946,
-            "get_star_ts": 1733038495
-          },
+        "6": {
           "1": {
-            "star_index": 20990,
-            "get_star_ts": 1733038039
+            "get_star_ts": 1733464372,
+            "star_index": 1276924
+          },
+          "2": {
+            "star_index": 1325887,
+            "get_star_ts": 1733482444
           }
         },
-        "2": {
+        "4": {
           "1": {
-            "get_star_ts": 1733116526,
-            "star_index": 218963
+            "star_index": 821137,
+            "get_star_ts": 1733291070
           },
           "2": {
-            "star_index": 231546,
-            "get_star_ts": 1733118203
+            "star_index": 826172,
+            "get_star_ts": 1733292054
           }
         },
         "3": {
@@ -264,181 +572,64 @@
             "star_index": 518743
           }
         },
-        "4": {
-          "1": {
-            "get_star_ts": 1733291070,
-            "star_index": 821137
-          },
+        "7": {
           "2": {
-            "get_star_ts": 1733292054,
-            "star_index": 826172
-          }
-        }
-      },
-      "stars": 8,
-      "id": 4293616
-    },
-    "3662146": {
-      "local_score": 27,
-      "last_star_ts": 1733255639,
-      "global_score": 0,
-      "name": "Szalay Roland",
-      "stars": 6,
-      "completion_day_level": {
-        "1": {
-          "2": {
-            "get_star_ts": 1733073422,
-            "star_index": 122879
+            "get_star_ts": 1733607202,
+            "star_index": 1592655
           },
           "1": {
-            "star_index": 121621,
-            "get_star_ts": 1733073042
+            "get_star_ts": 1733572083,
+            "star_index": 1513913
           }
         },
-        "2": {
-          "1": {
-            "star_index": 321011,
-            "get_star_ts": 1733139343
-          },
+        "8": {
           "2": {
-            "get_star_ts": 1733176957,
-            "star_index": 471220
-          }
-        },
-        "3": {
-          "2": {
-            "star_index": 738922,
-            "get_star_ts": 1733255639
+            "get_star_ts": 1733639649,
+            "star_index": 1641856
           },
           "1": {
-            "star_index": 607978,
-            "get_star_ts": 1733219498
-          }
-        }
-      },
-      "id": 3662146
-    },
-    "4290723": {
-      "global_score": 0,
-      "local_score": 59,
-      "last_star_ts": 1733208081,
-      "id": 4290723,
-      "stars": 6,
-      "completion_day_level": {
-        "3": {
-          "2": {
-            "get_star_ts": 1733208081,
-            "star_index": 555515
-          },
-          "1": {
-            "star_index": 544818,
-            "get_star_ts": 1733205724
+            "star_index": 1638500,
+            "get_star_ts": 1733638197
           }
         },
         "2": {
           "2": {
-            "get_star_ts": 1733123928,
-            "star_index": 254945
+            "get_star_ts": 1733118203,
+            "star_index": 231546
           },
           "1": {
-            "star_index": 239636,
-            "get_star_ts": 1733119939
+            "star_index": 218963,
+            "get_star_ts": 1733116526
           }
         },
         "1": {
-          "1": {
-            "star_index": 40706,
-            "get_star_ts": 1733045729
-          },
           "2": {
-            "star_index": 51801,
-            "get_star_ts": 1733049262
+            "star_index": 21946,
+            "get_star_ts": 1733038495
+          },
+          "1": {
+            "star_index": 20990,
+            "get_star_ts": 1733038039
+          }
+        },
+        "5": {
+          "2": {
+            "star_index": 1082042,
+            "get_star_ts": 1733382816
+          },
+          "1": {
+            "get_star_ts": 1733378646,
+            "star_index": 1068218
           }
         }
       },
-      "name": "Süte Tamás"
-    },
-    "4293625": {
-      "last_star_ts": 1733210431,
-      "local_score": 59,
       "global_score": 0,
-      "name": "Tibor Juhász",
-      "stars": 6,
-      "completion_day_level": {
-        "3": {
-          "1": {
-            "get_star_ts": 1733203327,
-            "star_index": 529053
-          },
-          "2": {
-            "get_star_ts": 1733210431,
-            "star_index": 565626
-          }
-        },
-        "2": {
-          "2": {
-            "star_index": 385311,
-            "get_star_ts": 1733155612
-          },
-          "1": {
-            "get_star_ts": 1733117148,
-            "star_index": 224793
-          }
-        },
-        "1": {
-          "1": {
-            "get_star_ts": 1733048193,
-            "star_index": 48461
-          },
-          "2": {
-            "star_index": 50687,
-            "get_star_ts": 1733048903
-          }
-        }
-      },
-      "id": 4293625
-    },
-    "4275943": {
-      "name": "Zoltán Rajkai",
-      "completion_day_level": {
-        "1": {
-          "2": {
-            "get_star_ts": 1733149416,
-            "star_index": 359517
-          },
-          "1": {
-            "get_star_ts": 1733148383,
-            "star_index": 355301
-          }
-        },
-        "2": {
-          "2": {
-            "get_star_ts": 1733153361,
-            "star_index": 375778
-          },
-          "1": {
-            "star_index": 366202,
-            "get_star_ts": 1733151029
-          }
-        }
-      },
-      "stars": 4,
-      "id": 4275943,
-      "last_star_ts": 1733153361,
-      "local_score": 18,
-      "global_score": 0
-    },
-    "4286400": {
-      "id": 4286400,
-      "name": "Tibor Beke-Kósa",
-      "stars": 0,
-      "completion_day_level": {},
-      "global_score": 0,
-      "last_star_ts": 0,
-      "local_score": 0
+      "id": 4293616,
+      "local_score": 206,
+      "stars": 16,
+      "last_star_ts": 1733639649
     },
     "2458797": {
-      "id": 2458797,
       "name": null,
       "completion_day_level": {
         "3": {
@@ -451,6 +642,36 @@
             "get_star_ts": 1733203498
           }
         },
+        "4": {
+          "2": {
+            "get_star_ts": 1733328778,
+            "star_index": 946426
+          },
+          "1": {
+            "star_index": 944301,
+            "get_star_ts": 1733328099
+          }
+        },
+        "7": {
+          "1": {
+            "star_index": 1476064,
+            "get_star_ts": 1733556238
+          },
+          "2": {
+            "get_star_ts": 1733560739,
+            "star_index": 1485758
+          }
+        },
+        "6": {
+          "1": {
+            "star_index": 1275735,
+            "get_star_ts": 1733464062
+          },
+          "2": {
+            "get_star_ts": 1733503969,
+            "star_index": 1379872
+          }
+        },
         "2": {
           "1": {
             "get_star_ts": 1733118982,
@@ -461,10 +682,30 @@
             "get_star_ts": 1733120232
           }
         },
+        "8": {
+          "2": {
+            "get_star_ts": 1733643000,
+            "star_index": 1648252
+          },
+          "1": {
+            "get_star_ts": 1733642239,
+            "star_index": 1646884
+          }
+        },
+        "5": {
+          "2": {
+            "get_star_ts": 1733377464,
+            "star_index": 1062651
+          },
+          "1": {
+            "get_star_ts": 1733376580,
+            "star_index": 1057342
+          }
+        },
         "1": {
           "2": {
-            "get_star_ts": 1733035652,
-            "star_index": 16462
+            "star_index": 16462,
+            "get_star_ts": 1733035652
           },
           "1": {
             "star_index": 15972,
@@ -472,74 +713,351 @@
           }
         }
       },
-      "stars": 6,
       "global_score": 0,
-      "last_star_ts": 1733204376,
-      "local_score": 74
+      "id": 2458797,
+      "local_score": 188,
+      "stars": 16,
+      "last_star_ts": 1733643000
     },
-    "4228223": {
-      "global_score": 0,
-      "local_score": 79,
-      "last_star_ts": 1733296590,
-      "id": 4228223,
-      "name": "Krisztián Kuntner",
+    "4293664": {
+      "name": "Ádám Ling",
       "completion_day_level": {
-        "1": {
+        "7": {
           "1": {
-            "star_index": 0,
-            "get_star_ts": 1733029980
-          },
-          "2": {
-            "star_index": 1671,
-            "get_star_ts": 1733030191
-          }
-        },
-        "3": {
-          "1": {
-            "get_star_ts": 1733241781,
-            "star_index": 690066
-          },
-          "2": {
-            "star_index": 691489,
-            "get_star_ts": 1733242182
+            "get_star_ts": 1733550047,
+            "star_index": 1460502
           }
         },
         "4": {
+          "1": {
+            "get_star_ts": 1733298009,
+            "star_index": 847689
+          },
           "2": {
-            "get_star_ts": 1733296590,
-            "star_index": 842830
+            "star_index": 866662,
+            "get_star_ts": 1733303353
+          }
+        },
+        "3": {
+          "2": {
+            "star_index": 546900,
+            "get_star_ts": 1733206148
           },
           "1": {
-            "get_star_ts": 1733295166,
-            "star_index": 838133
+            "star_index": 534039,
+            "get_star_ts": 1733203900
+          }
+        },
+        "1": {
+          "1": {
+            "get_star_ts": 1733061447,
+            "star_index": 88138
+          },
+          "2": {
+            "get_star_ts": 1733062046,
+            "star_index": 89855
+          }
+        },
+        "6": {
+          "1": {
+            "star_index": 1319641,
+            "get_star_ts": 1733480035
+          },
+          "2": {
+            "star_index": 1322169,
+            "get_star_ts": 1733481010
           }
         },
         "2": {
           "2": {
-            "star_index": 294404,
-            "get_star_ts": 1733132852
+            "star_index": 291659,
+            "get_star_ts": 1733132277
           },
           "1": {
-            "get_star_ts": 1733132156,
-            "star_index": 291100
+            "get_star_ts": 1733130554,
+            "star_index": 283692
           }
         }
       },
-      "stars": 8
+      "global_score": 0,
+      "id": 4293664,
+      "local_score": 109,
+      "last_star_ts": 1733550047,
+      "stars": 11
+    },
+    "3662146": {
+      "completion_day_level": {
+        "4": {
+          "2": {
+            "star_index": 984740,
+            "get_star_ts": 1733341454
+          },
+          "1": {
+            "star_index": 969157,
+            "get_star_ts": 1733336270
+          }
+        },
+        "3": {
+          "2": {
+            "get_star_ts": 1733255639,
+            "star_index": 738922
+          },
+          "1": {
+            "get_star_ts": 1733219498,
+            "star_index": 607978
+          }
+        },
+        "7": {
+          "2": {
+            "get_star_ts": 1733600517,
+            "star_index": 1579115
+          },
+          "1": {
+            "star_index": 1577248,
+            "get_star_ts": 1733599584
+          }
+        },
+        "2": {
+          "2": {
+            "star_index": 471220,
+            "get_star_ts": 1733176957
+          },
+          "1": {
+            "star_index": 321011,
+            "get_star_ts": 1733139343
+          }
+        },
+        "6": {
+          "1": {
+            "get_star_ts": 1733518770,
+            "star_index": 1412358
+          }
+        },
+        "1": {
+          "2": {
+            "star_index": 122879,
+            "get_star_ts": 1733073422
+          },
+          "1": {
+            "get_star_ts": 1733073042,
+            "star_index": 121621
+          }
+        },
+        "5": {
+          "2": {
+            "star_index": 1586740,
+            "get_star_ts": 1733604227
+          },
+          "1": {
+            "get_star_ts": 1733429378,
+            "star_index": 1212042
+          }
+        }
+      },
+      "name": "Szalay Roland",
+      "global_score": 0,
+      "id": 3662146,
+      "local_score": 67,
+      "stars": 13,
+      "last_star_ts": 1733604227
+    },
+    "4275943": {
+      "local_score": 59,
+      "id": 4275943,
+      "last_star_ts": 1733559300,
+      "stars": 11,
+      "name": "Zoltán Rajkai",
+      "completion_day_level": {
+        "3": {
+          "2": {
+            "star_index": 889585,
+            "get_star_ts": 1733310001
+          },
+          "1": {
+            "get_star_ts": 1733308155,
+            "star_index": 883623
+          }
+        },
+        "4": {
+          "1": {
+            "get_star_ts": 1733385940,
+            "star_index": 1091777
+          },
+          "2": {
+            "star_index": 1093729,
+            "get_star_ts": 1733386553
+          }
+        },
+        "6": {
+          "1": {
+            "get_star_ts": 1733559300,
+            "star_index": 1482528
+          }
+        },
+        "2": {
+          "1": {
+            "get_star_ts": 1733151029,
+            "star_index": 366202
+          },
+          "2": {
+            "get_star_ts": 1733153361,
+            "star_index": 375778
+          }
+        },
+        "1": {
+          "1": {
+            "get_star_ts": 1733148383,
+            "star_index": 355301
+          },
+          "2": {
+            "get_star_ts": 1733149416,
+            "star_index": 359517
+          }
+        },
+        "5": {
+          "2": {
+            "get_star_ts": 1733392618,
+            "star_index": 1113387
+          },
+          "1": {
+            "get_star_ts": 1733388187,
+            "star_index": 1099023
+          }
+        }
+      },
+      "global_score": 0
+    },
+    "2455297": {
+      "stars": 15,
+      "last_star_ts": 1733646252,
+      "id": 2455297,
+      "local_score": 108,
+      "global_score": 0,
+      "completion_day_level": {
+        "5": {
+          "1": {
+            "star_index": 1137675,
+            "get_star_ts": 1733401622
+          },
+          "2": {
+            "get_star_ts": 1733405411,
+            "star_index": 1147841
+          }
+        },
+        "1": {
+          "1": {
+            "get_star_ts": 1733149904,
+            "star_index": 361537
+          },
+          "2": {
+            "star_index": 364782,
+            "get_star_ts": 1733150693
+          }
+        },
+        "8": {
+          "1": {
+            "get_star_ts": 1733646252,
+            "star_index": 1654307
+          }
+        },
+        "2": {
+          "1": {
+            "star_index": 378679,
+            "get_star_ts": 1733154051
+          },
+          "2": {
+            "star_index": 420869,
+            "get_star_ts": 1733164329
+          }
+        },
+        "7": {
+          "2": {
+            "star_index": 1489956,
+            "get_star_ts": 1733562625
+          },
+          "1": {
+            "get_star_ts": 1733561745,
+            "star_index": 1487984
+          }
+        },
+        "3": {
+          "2": {
+            "get_star_ts": 1733214432,
+            "star_index": 584400
+          },
+          "1": {
+            "star_index": 570926,
+            "get_star_ts": 1733211620
+          }
+        },
+        "4": {
+          "1": {
+            "star_index": 914826,
+            "get_star_ts": 1733318667
+          },
+          "2": {
+            "get_star_ts": 1733320934,
+            "star_index": 921733
+          }
+        },
+        "6": {
+          "1": {
+            "get_star_ts": 1733478052,
+            "star_index": 1314305
+          },
+          "2": {
+            "get_star_ts": 1733510281,
+            "star_index": 1393901
+          }
+        }
+      },
+      "name": "kfogas-sz"
     },
     "2684471": {
+      "last_star_ts": 1733564475,
+      "stars": 14,
+      "local_score": 130,
       "id": 2684471,
-      "name": "leinadsened",
-      "stars": 6,
+      "global_score": 0,
       "completion_day_level": {
+        "4": {
+          "2": {
+            "star_index": 910247,
+            "get_star_ts": 1733317124
+          },
+          "1": {
+            "get_star_ts": 1733305145,
+            "star_index": 873151
+          }
+        },
         "3": {
           "2": {
             "star_index": 546233,
             "get_star_ts": 1733206014
           },
           "1": {
-            "get_star_ts": 1733202891,
-            "star_index": 524372
+            "star_index": 524372,
+            "get_star_ts": 1733202891
+          }
+        },
+        "7": {
+          "2": {
+            "get_star_ts": 1733564475,
+            "star_index": 1494470
+          },
+          "1": {
+            "star_index": 1493918,
+            "get_star_ts": 1733564263
+          }
+        },
+        "6": {
+          "2": {
+            "get_star_ts": 1733562375,
+            "star_index": 1489383
+          },
+          "1": {
+            "star_index": 1488067,
+            "get_star_ts": 1733561769
           }
         },
         "2": {
@@ -548,14 +1066,24 @@
             "get_star_ts": 1733117543
           },
           "2": {
-            "star_index": 237467,
-            "get_star_ts": 1733119423
+            "get_star_ts": 1733119423,
+            "star_index": 237467
+          }
+        },
+        "5": {
+          "1": {
+            "star_index": 1204099,
+            "get_star_ts": 1733426421
+          },
+          "2": {
+            "get_star_ts": 1733427428,
+            "star_index": 1206690
           }
         },
         "1": {
           "1": {
-            "star_index": 61531,
-            "get_star_ts": 1733052303
+            "get_star_ts": 1733052303,
+            "star_index": 61531
           },
           "2": {
             "get_star_ts": 1733052954,
@@ -563,46 +1091,8 @@
           }
         }
       },
-      "global_score": 0,
-      "local_score": 66,
-      "last_star_ts": 1733206014
-    },
-    "4275886": {
-      "global_score": 0,
-      "local_score": 18,
-      "last_star_ts": 1733245494,
-      "id": 4275886,
-      "stars": 5,
-      "completion_day_level": {
-        "3": {
-          "1": {
-            "star_index": 703638,
-            "get_star_ts": 1733245494
-          }
-        },
-        "2": {
-          "2": {
-            "get_star_ts": 1733156840,
-            "star_index": 390451
-          },
-          "1": {
-            "get_star_ts": 1733155264,
-            "star_index": 383842
-          }
-        },
-        "1": {
-          "2": {
-            "get_star_ts": 1733152784,
-            "star_index": 373364
-          },
-          "1": {
-            "star_index": 117163,
-            "get_star_ts": 1733071606
-          }
-        }
-      },
-      "name": "Gábor Kalmár"
+      "name": "leinadsened"
     }
   },
-  "owner_id": 4228223
+  "day1_ts": 1733029200
 }
