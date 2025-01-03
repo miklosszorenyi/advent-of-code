@@ -1,4 +1,6 @@
-const { Dijkstra, collectGraph } = require("./libs");
+const { cloneDeep, min, uniq, flatMap, find } = require("lodash");
+const { Dijkstra, collectGraph, wait, DFS } = require("./libs");
+const fs = require('fs').promises;
 
 const test_input = [
   '###############',
@@ -182,27 +184,6 @@ const final_input = [
   '#############################################################################################################################################',
 ].map((row) => row.split(''));
 
-function DFS(graph, node, target, visited, path) {
-  visited.push(node);
-  path.push(node)
-
-  for (neighbor of node.neighbors) {
-    if (neighbor === target) {
-      visited.push(neighbor);
-      return path;
-    }
-
-    if (!visited.includes(neighbor)) {
-      if (DFS(graph, neighbor, target, visited, path)) {
-        return path;
-      }
-    }
-  }
-
-  path.pop();
-  return false;
-}
-
 function isCorner(node) {
   const neighbors = node.neighbors;
 
@@ -214,47 +195,101 @@ function isCorner(node) {
 }
 
 function viewMap(currentMap) {
-  console.log(currentMap.map((row) => row.join('').replace(/[\.#]/g, ' ')).join('\n'));
+  console.log(currentMap.map((row) => row.join('').replace(/[\.]/g, ' ')).join('\r\n'));
+}
+
+function getFingerPrint(path) {
+  return path.map((node) => {
+    return `${node.x}-${node.y}`;
+  }).join(',');
 }
 
 function part1(input) {
-  const graph = collectGraph(input, ['S', 'E', '.'])
-  const start = graph.filter((node) => node.type === 'S')[0];
-  const target = graph.filter((node) => node.type === 'E')[0];
+  let graph = collectGraph(input, ['S', 'E', '.'])
+  let start = graph.filter((node) => node.type === 'S')[0];
+  let target = graph.filter((node) => node.type === 'E')[0];
+  const finding = [Dijkstra(graph, start, target, true)];
+  const score = finding[0].path.reduce((acc, node) => acc + (node.score || 0), 0);
+  const pathFingerPrints = [];
+  let found = true;
 
-  const path = Dijkstra(graph, start, target, true).path;
-  let score = 1000 + path.length;
+  pathFingerPrints.push(getFingerPrint(finding[0].path));
 
-  console.log(path.length);
+  while (found) {
+    found = false;
+    for (let i = 0; i < finding[0].path.length - 1; i++) {
+      console.log(i);
+      for (let j = 0; j < finding.length; j++) {
+        input[finding[j].path[i].y][finding[j].path[i].x] = '#';
+      }
+      // viewMap(input);
+      graph = collectGraph(input, ['S', 'E', '.'])
+      start = graph.filter((node) => node.type === 'S')[0];
+      target = graph.filter((node) => node.type === 'E')[0];
 
-  for (let i = 1; i < path.length - 1; i++) {
-    let prev = path[i - 1];
-    let next = path[i + 1];
+      let alterPath = Dijkstra(graph, start, target, true);
+      let alterPathScore = alterPath.path.reduce((acc, node) => acc + (node.score || 0), 0)
+      if (alterPathScore === score) {
+        if (!pathFingerPrints.includes(getFingerPrint(alterPath.path))) {
+          finding.push(alterPath);
+          pathFingerPrints.push(getFingerPrint(alterPath.path));
+          found = true;
+        }
+      }
+      for (let j = 0; j < finding.length; j++) {
+        input[finding[j].path[i].y][finding[j].path[i].x] = '.';
+      }
+    }
 
-    if (prev.x !== next.x && prev.y !== next.y) {
-      score += 1000;
+    if (found) {
+      console.log('count of paths', finding.length);
     }
   }
 
+  console.log(pathFingerPrints);
 
-  path.forEach((node) => {
-    input[node.y][node.x] = node.score === 1000 ? 'X' : 'O';
+  uniq(pathFingerPrints.join(',').split(',')).forEach((coo) => {
+    let [x, y] = coo.split('-');
+    input[y][x] = 'O';
   });
-
-  // DFS(graph, start, target, [], []).forEach((node) => {
-  //   input[node.y][node.x] = 'O';
-  // });
 
   viewMap(input);
 
-  return score;
+  // return finding.path.length;
+
+  return uniq(pathFingerPrints.join(',').split(',')).length + 1; // +1 for the end node
+
+  // let filtered = pathsWithMinCorners; //.filter((p) => p.reduce((acc, node) => acc + (node.isCorner ? 1 : 0), 0) < 10 && p.length === p.length + 1);
+  // for (let i = 0; i < filtered.length; i++) {
+  //   let inputCopy = JSON.parse(JSON.stringify(input));
+  //   filtered[i].forEach((node) => {
+  //     inputCopy[node.y][node.x] = node.isCorner ? 'X' : 'O';
+  //   });
+  //   viewMap(inputCopy);
+  //   console.log(`${i + 1}/${filtered.length}`, filtered[i].length, filtered[i].reduce((acc, node) => acc + node.score || 0, 0));
+  //   // await wait(1000);
+  // }
 }
 
 function part2(input) {
 
 }
 
-// 123484 - high
-// 106512
+// 562 - low
 
-console.log(part1(test_input));
+// (async () => {
+//   const input = await fs.readFile('day16.txt', 'utf-8');
+//   const final_paths = input.split('\n').slice(-100, -1).map(line => JSON.parse(line));
+//   for (let i in final_paths) {
+//     console.clear();
+//     console.log('--------------------------------------------------------------');
+//     let inputCopy = JSON.parse(JSON.stringify(final_input));
+//     final_paths[i].forEach((node) => {
+//       inputCopy[node[0]][node[1]] = 'O';
+//     });
+//     viewMap(inputCopy);
+//     await wait(10);
+//   }
+// })();
+
+console.log(part1(final_input));

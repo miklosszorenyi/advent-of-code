@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const test_input = {
   A: 729,
   B: 0,
@@ -12,8 +14,22 @@ const test_input_2 = {
   Program: [[0, 3], [5, 4], [3, 0]]
 };
 
+const test_input_3 = {
+  A: 117440,
+  B: 0,
+  C: 0,
+  Program: [[0, 3], [5, 4], [3, 0]]
+};
+
+const final_input = {
+  A: 30344604,
+  B: 0,
+  C: 0,
+  Program: [[2, 4], [1, 1], [7, 5], [1, 5], [4, 5], [0, 3], [5, 5], [3, 0]]
+};
+
 const map = {
-  A: 100000000000000,
+  A: 30344604,
   B: 0,
   C: 0,
   Program: [[2, 4], [1, 1], [7, 5], [1, 5], [4, 5], [0, 3], [5, 5], [3, 0]]
@@ -81,32 +97,32 @@ function part1(input) {
 function part2(input) {
   const expected = input.Program.map(p => p.join(',')).join(',');
   const t = Date.now();
-  let curr = 1000000;
-  let incr = 1000000;
+  // let incr = 164546073102924;
+  // let incr = 164546164274876;
+  // let incr = 164546059530173; 
+  // let incr = 35184437673842; // felfele
+  let incr = 164540892147389; // 164545991376446 innen kell folytatni
+  // jo, csak nem a legkisebb: 164546059530173, 164546059529917, 164545992421309, 164545992421053, 164540892147645, 164540892147389
+  // elso 16 szamjegyu: 35184372088832
   let done = false;
 
   while (!done) {
-    input.A = curr;
+    input.A = incr;
 
     let result = part1(input)
 
-    if (result.length > expected.length) {
-      curr -= incr;
-    } else {
-      curr += incr;
-    }
+    fs.appendFileSync('result9.txt', `${incr};${result}\n`);
+    console.log(incr, result, result.length, expected.length);
 
-    if (expected == part1(input)) {
+    if (expected == result || result.length > expected.length) {
       done = true;
     }
 
-
-    console.log(curr, (new Date() - t) / 1000);
-
-    incr = Math.round(incr / 2);
+    incr -= 256;
   }
-
-  console.log(curr - 1);
 }
 
-console.log(part1(map));
+console.log(part2(map));
+
+// 1159494
+// 9275948

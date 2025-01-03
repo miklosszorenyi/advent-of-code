@@ -105,5 +105,5 @@ function part2(input) {
   }
 }
 
-console.log(part1(final_input));
+console.log(part1(test_input));
 

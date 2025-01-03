@@ -1,3 +1,5 @@
+const { collectGraph, refreshNeighbors, wait } = require("./libs");
+
 const test_input = {
   map: [
     '##########',
@@ -24,8 +26,76 @@ const test_input_2 = {
     '#.....#',
     '#######',
   ].map((row) => row.split('')),
-  moves: '<vv<<^'.split('')
-  // moves: '<vv<<^^<<^^'.split('')
+  moves: '<<<<<>>>>>'.split('')
+}
+
+const test_input_3 = {
+  map: [
+    '#######',
+    '#..##.#',
+    '#.....#',
+    '#.OO..#',
+    '#..O..#',
+    '#....@#',
+    '#######',
+  ].map((row) => row.split('')),
+  moves: '<<<^<<^^>v'.split('')
+}
+
+const test_input_4 = {
+  map: [
+    '#################################################################################################',
+    '#..##...........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.OO..O.........................................................................................#',
+    '#..O..O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....O.........................................................................................#',
+    '#.....@.........................................................................................#',
+    '#################################################################################################',
+  ].map((row) => row.split('')),
+  moves: '<^^><vv>>>^^'.split('')
 }
 
 const final_input = {
@@ -98,33 +168,116 @@ const OBJECTS = {
   [OBJECT_TYPES.BOX]: 'O',
 };
 
+const moveMap = {
+  '<': 'left',
+  '>': 'right',
+  'v': 'down',
+  '^': 'up',
+}
+
 function viewMap(currentMap) {
   console.log(currentMap.map((row) => row.join('')).join('\n'));
 }
 
 function findRobot(map) {
-  for (let y = 0; y < map.length; y++) {
-    for (let x = 0; x < map[y].length; x++) {
-      if (map[y][x] === OBJECTS.ROBOT) {
-        return { x, y };
-      }
+  for (let i = 0; i < map.length; i++) {
+    if (map[i].type === OBJECTS.ROBOT) {
+      return map[i];
     }
   }
 }
 
-function getAllConnectedBoxes(x, y, map) {
+function findObjects(map, obj) {
+  const objects = [];
+  for (let i = 0; i < map.length; i++) {
+    if (map[i].type === obj) {
+      objects.push(map[i]);
+    }
+  }
+  return objects;
+}
+
+function moveObject(object, currentMap, direction) {
+  let neighbor = object.neighbors.filter((neighbor) => neighbor.side == direction)[0];
+
+  if (!neighbor) {
+    return
+  }
+
+  neighbor = getObjectByUuid(currentMap, neighbor.uuid);
+  let { x, y } = neighbor;
+
+  neighbor.x = object.x;
+  neighbor.y = object.y;
+  object.x = x;
+  object.y = y;
+}
+
+function hasObstacle(boxes, dir) {
+  let obstacle = false;
+
+  for (let i = 0; i < boxes.length; i++) {
+    for (let j = 0; j < boxes[i].neighbors.length; j++) {
+      if (boxes[i].neighbors[j].side === dir) {
+        if (boxes[i].neighbors[j].type === OBJECTS.WALL) {
+          obstacle = true;
+        }
+      }
+    }
+  }
+
+  return obstacle;
+}
+
+function getClosestNeigborhood(object, map, around = 5) {
+  const aa = map.filter((obj) => {
+    // const around = 50;
+    return obj.x >= object.x - around && obj.x <= object.x + around && obj.y >= object.y - around && obj.y <= object.y + around;
+  });
+
+  console.log(aa.length);
+
+  return aa;
+}
+
+function getAllConnectedBoxes(target, currentMap, type, direction) {
   let done = false;
-  let connectedBoxes = [`${x}-${y}`];
+  let connectedBoxes = [target];
 
   while (!done) {
     let found = false;
 
-    for (let y = 0; y < map.length; y++) {
-      for (let x = 0; x < map[y].length; x++) {
-        if (map[y][x] === OBJECTS.BOX && !connectedBoxes.includes(`${x}-${y}`)) {
-          connectedBoxes.push(`${x}-${y}`);
+    for (let i = 0; i < connectedBoxes.length; i++) {
+      if (type === 'BLOCK') {
+        let pair = getObjectByUuid(currentMap, connectedBoxes[i].pair);
+        if (!connectedBoxes.includes(pair)) {
+          connectedBoxes.push(pair);
           found = true;
         }
+
+        connectedBoxes[i].neighbors.forEach((neighbor) => {
+          let side = neighbor.side;
+          neighbor = getObjectByUuid(currentMap, neighbor.uuid);
+          if (neighbor.type == OBJECTS.BOX
+            && [direction].includes(side)
+            && !connectedBoxes.includes(neighbor)
+          ) {
+            connectedBoxes.push(neighbor);
+            found = true;
+          }
+        });
+      } else {
+        connectedBoxes[i].neighbors.filter((neighbor) => neighbor.type == OBJECTS.BOX
+          && (type === 'VERTICAL' && ['up', 'down'].includes(neighbor.side)
+            || type === 'HORIZONTAL' && ['left', 'right'].includes(neighbor.side)
+          )
+        ).forEach((neighbor) => {
+          neighbor = getObjectByUuid(currentMap, neighbor.uuid);
+          if (!connectedBoxes.includes(neighbor)) {
+            connectedBoxes.push(neighbor);
+            found = true;
+          }
+        });
       }
     }
 
@@ -133,126 +286,138 @@ function getAllConnectedBoxes(x, y, map) {
     }
   }
 
-  return connectedBoxes.map((box) => box.split('-').map((coord) => parseInt(coord)));
+  return connectedBoxes;
 }
 
-function push(pos, currentMap, direction, checkNeighboursToo = false) {
-  let done = false;
-  let step = 0;
-  let next, nextX, nextY;
-  let positions = [];
+const indexes = {};
 
-  while (!done) {
-    step++;
+function getObjectByPos(map, x, y) {
+  return map.filter((obj) => obj.x === x && obj.y === y)[0];
+}
 
-    if (direction === 'left') {
-      nextX = pos.x - step;
-      nextY = pos.y;
-    } else if (direction === 'right') {
-      nextX = pos.x + step;
-      nextY = pos.y;
-    } else if (direction === 'up') {
-      nextX = pos.x;
-      nextY = pos.y - step;
-    } else if (direction === 'down') {
-      nextX = pos.x;
-      nextY = pos.y + step;
+function getObjectByUuid(map, uuid) {
+  return map[indexes[uuid]]; //map.filter((obj) => obj.uuid === uuid)[0];
+}
+
+function move(robot, currentMap, direction, wideMap = false, iter) {
+  const dir = ['up', 'down'].includes(direction) ? 'VERTICAL' : 'HORIZONTAL';
+  const around = iter > 18500 ? 30 : 11;
+
+  let targetNeighbor = robot.neighbors.filter((neighbor) => neighbor.side == direction)[0];
+  targetNeighbor = getObjectByUuid(currentMap, targetNeighbor.uuid);
+
+  let nextX = targetNeighbor.x;
+  let nextY = targetNeighbor.y;
+
+  if (!targetNeighbor || targetNeighbor.type == OBJECT_TYPES.WALL) {
+    return;
+  } else if (targetNeighbor.type == OBJECTS.FREE) {
+    targetNeighbor.x = robot.x;
+    targetNeighbor.y = robot.y;
+    robot.x = nextX;
+    robot.y = nextY;
+    refreshNeighbors(getClosestNeigborhood(robot, currentMap, around));
+  } else if (targetNeighbor.type == OBJECTS.BOX) {
+    let axis = ['up', 'down'].includes(direction) ? 'y' : 'x';
+    let boxes = getAllConnectedBoxes(
+      targetNeighbor,
+      currentMap,
+      wideMap && dir == 'VERTICAL' ? 'BLOCK' : dir,
+      direction,
+    ).sort((a, b) => ['up', 'left'].includes(direction) ? a[axis] - b[axis] : b[axis] - a[axis]);
+
+    if (hasObstacle(boxes, direction)) {
+      return;
     }
 
-    next = currentMap[nextY][nextX];
-    console.log(nextY, nextX, next);
-    if (next == OBJECTS.BOX) {
-      if (['up', 'down'].includes(direction) && checkNeighboursToo) {
-        ;
-        console.log('check neighbours', getAllConnectedBoxes(nextX, nextY, currentMap));
-        positions = [
-          ...positions,
-          ...getAllConnectedBoxes(nextX, nextY, currentMap).map((box) => [box[0], box[1] - 1]),
-        ];
-      } else {
-        positions.push([nextX, nextY]);
+    for (let i = 0; i < boxes.length; i++) {
+      let uuid;
+
+      try {
+        uuid = boxes[i].neighbors.filter((neighbor) => neighbor.side == direction)[0].uuid
+      } catch (e) {
+        console.log(direction);
+
+        currentMap.forEach((node) => {
+          final_input.map[node.y][node.x] = node.type;
+        });
+
+        viewMap(final_input.map);
       }
-    } else if (next == OBJECTS.FREE) {
-      positions.push([nextX, nextY]);
-      done = true;
-    } else if (next == OBJECTS.WALL) {
-      positions = [];
-      done = true;
+
+
+      let nb = getObjectByUuid(
+        currentMap,
+        uuid
+      );
+      let tmp = boxes[i][axis];
+      if (nb) {
+        boxes[i][axis] = nb[axis];
+        nb[axis] = tmp;
+        refreshNeighbors(getClosestNeigborhood(nb, currentMap, around));
+      }
     }
+
+    moveObject(robot, currentMap, direction);
+    refreshNeighbors(getClosestNeigborhood(robot, currentMap, around));
   }
-
-  if (positions.length === 0) {
-    return false;
-  }
-
-  console.log(pos, positions);
-
-  for (let position of positions) {
-    currentMap[position[1]][position[0]] = OBJECTS.BOX;
-  }
-  currentMap[positions[0][1]][positions[0][0]] = OBJECTS.FREE;
-
-  return true;
 }
 
 function collectBoxCoords(currentMap) {
-  let boxes = [];
-
-  for (let y = 0; y < currentMap.length; y++) {
-    for (let x = 0; x < currentMap[y].length; x++) {
-      if (currentMap[y][x] === OBJECTS.BOX) {
-        boxes.push([x, y]);
-      }
-    }
-  }
-
-  return boxes;
-}
-
-function part1(input, wideMap = false) {
-  const currentMap = wideMap ? duplicateObjects(input.map) : input.map;
-  const robot = {
-    ...findRobot(currentMap),
-  };
-
-  for (let move of input.moves) {
-    currentMap[robot.y][robot.x] = OBJECTS.FREE;
-
-    switch (move) {
-      case '<':
-        if (push({ x: robot.x, y: robot.y }, currentMap, 'left', wideMap)) {
-          robot.x--;
-        }
-        break;
-      case '>':
-        if (push({ x: robot.x, y: robot.y }, currentMap, 'right', wideMap)) {
-          robot.x++;
-        }
-        break;
-      case 'v':
-        if (push({ x: robot.x, y: robot.y }, currentMap, 'down', wideMap)) {
-          robot.y++;
-        }
-        break;
-      case '^':
-        if (push({ x: robot.x, y: robot.y }, currentMap, 'up', wideMap)) {
-          robot.y--;
-        }
-        break;
-    }
-
-    currentMap[robot.y][robot.x] = OBJECTS.ROBOT;
-  }
-
-  viewMap(currentMap);
-
-  return collectBoxCoords(currentMap)
-    .map((box) => box[0] + box[1] * 100)
-    .reduce((acc, val) => acc + val);
+  return findObjects(currentMap, OBJECTS.BOX).filter(box => box.side == 'left').map((box) => [box.x, box.y]);
 }
 
 function duplicateObjects(map) {
   return map.map((row) => row.flatMap(cell => cell != OBJECTS.ROBOT ? [cell, cell] : [cell, '.']));
+}
+
+async function part1(input, wideMap = false) {
+  let currentMap = collectGraph(wideMap
+    ? duplicateObjects(input.map)
+    : input.map, ['.', '#', '@', 'O']
+  );
+  currentMap.forEach((node, index) => {
+    indexes[node.uuid] = index;
+  });
+
+  currentMap.filter((node) => node.type === OBJECTS.BOX).forEach((node) => {
+    const boxSide = (node.x + 1) % 2 === 0 ? 'right' : 'left';
+    node.side = boxSide;
+    if (boxSide === 'left') {
+      node.pair = getObjectByPos(currentMap, node.x + 1, node.y).uuid;
+    } else {
+      node.pair = getObjectByPos(currentMap, node.x - 1, node.y).uuid;
+    }
+  });
+
+  const robot = findRobot(currentMap);
+
+  let iter = 0;
+
+  for (let mv of input.moves) {
+    // console.clear();
+    console.log(`${++iter}/${input.moves.length}`);
+    move(robot, currentMap, moveMap[mv], wideMap, iter);
+    // currentMap.forEach((node) => {
+    //   input.map[node.y][node.x] = node.type == OBJECTS.ROBOT ? mv : node.type;
+    // });
+
+    // viewMap(input.map);
+    // await wait(10);
+  }
+
+  console.log('-----------', getObjectByPos(currentMap, 22, 8));
+  console.log(currentMap.filter((node) => node.type === OBJECTS.BOX && node.neighbors.length < 4)[0]);
+
+  currentMap.forEach((node) => {
+    input.map[node.y][node.x] = node.type;
+  });
+
+  viewMap(input.map);
+
+  return collectBoxCoords(currentMap)
+    .map((box) => box[0] + box[1] * 100)
+    .reduce((acc, val) => acc + val);
 }
 
 function part2(input) {
@@ -261,4 +426,6 @@ function part2(input) {
   viewMap(currentMap);
 }
 
-console.log(part1(test_input_2, true));
+// 1522452 - high
+// 1521952 - high
+console.log(part1(final_input, true));
