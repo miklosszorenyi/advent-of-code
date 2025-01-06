@@ -9937,3 +9937,4 @@
 124-139, time: 3959, pathlen: 9260, saved: 120
 130-139, time: 3622, pathlen: 9376, saved: 4
 136-139, time: 3470, pathlen: 9332, saved: 48
+8-1, time: 2400, pathlen: 9364, saved: 16

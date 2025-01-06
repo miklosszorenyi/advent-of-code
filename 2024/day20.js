@@ -1,5 +1,6 @@
 const fs = require('fs');
-const { collectGraph, Dijkstra } = require("./libs");
+const { collectGraph, Dijkstra, manhattanDistance, manhattanPath } = require("./libs");
+const { cloneDeep } = require('lodash');
 
 const test_input = [
   '###############',
@@ -136,7 +137,7 @@ const final_input = [
   '#.......#.#...#.#.....#.#...#...#...#...#.#.#.#.....#.#...#...#...........#.......#.#.#####.#.#.#.###...#...#.#.###...#...###...#...#...#...#',
   '#.#######.###.#.#.#####.#######.#.#.#####.#.#.#######.###.#####.###########.#######.#.#####.#.#.#.#####.#.###.#.#####.#.#########.###.#.#.###',
   '#.#...#...#...#.#.......#...###...#.#...#.#.#.......#.#...#...#...........#.......#.#...###...#.#...#...#...#.#...#...#.........#...#.#.#...#',
-  '#.#.#.#.###.###.#########.#.#######.#.#.#.#.#######.#.#.###.#.###########.#######.#.###.###?###.###.#.#####.#.###.#.###########.###.#.#.###.#',
+  '#.#.#.#.###.###.#########.#.#######.#.#.#.#.#######.#.#.###.#.###########.#######.#.###.#######.###.#.#####.#.###.#.###########.###.#.#.###.#',
   '#.#.#.#.###...#.#.....#...#.........#.#.#.#.#.......#.#.....#.#...........#...#...#...#.......#.#...#.#...#.#.#...#.#.....#...#...#...#.#...#',
   '#.#.#.#.#####.#.#.###.#.#############.#.#.#.#.#######.#######.#.###########.#.#.#####.#######.#.#.###.#.#.#.#.#.###.#.###.#.#.###.#####.#.###',
   '#.#.#...#...#...#...#.#...#.......#...#.#.#.#.......#...#.....#.........#...#.#.#####.#.......#...#...#.#.#.#.#.#...#...#.#.#...#...#...#.###',
@@ -192,10 +193,6 @@ function part1(input) {
 
   }
 
-  // finding.path.forEach((node) => {
-  //   input[node.y][node.x] = '-';
-  // });
-  // viewMap(input);
 
 
   // a ? miatt (117,93) +1
@@ -204,20 +201,44 @@ function part1(input) {
 }
 
 function part2(input) {
-  let graph = collectGraph([
-    '####S',
-    '#####',
-    '#####',
-    '#####',
-    'E####',
-  ].map(row => row.split('')), ['S', 'E', '#'])
+  let graph = collectGraph(input, ['S', 'E', '.'])
   let start = graph.filter((node) => node.type === 'S')[0];
   let target = graph.filter((node) => node.type === 'E')[0];
-  let finding = Dijkstra(graph, start, target, false, false, false, true);
+  let mainFinding = Dijkstra(graph, start, target, true);
+  let saves = {};
 
-  console.log(finding.allPaths.length);
+  const reversedPath = mainFinding.path.reverse();
+  reversedPath.push(target);
 
+  for (let i = 0; i < reversedPath.length; i++) {
+    for (let j = i; j < reversedPath.length; j++) {
+      const { x: jx, y: jy } = reversedPath[j];
+      const mDist = manhattanDistance(reversedPath[i], reversedPath[j]);
+
+      if (mDist <= 20) {
+        const save = j - mDist - i;
+        if (save >= 100) {
+          if (!saves[save]) {
+            saves[save] = 1;
+          } else {
+            saves[save]++;
+          }
+        }
+      }
+    }
+  }
+
+  console.log(saves);
+
+  reversedPath.forEach((node, index) => {
+    input[node.y][node.x] = 'o';
+  });
+
+  return Object.values(saves).reduce((acc, val) => acc + val, 0);
 }
+
+// 982247 - low
+// 982474
 
 console.log(part2(final_input));
 

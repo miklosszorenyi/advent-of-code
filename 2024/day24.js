@@ -406,8 +406,6 @@ function part1(input) {
   });
 
   while (Object.values(input.startValues).some((value) => value === undefined)) {
-    console.clear();
-    console.log('----------------------');
     input.wires.forEach((wire) => {
       const first = input.startValues[wire.first];
       const second = input.startValues[wire.second];
@@ -428,8 +426,6 @@ function part1(input) {
 
         input.startValues[wire.target] = result;
       }
-
-      console.log(`${wire.first} ${wire.op} ${wire.second} -> ${wire.target} = ${input.startValues[wire.target]}`);
     });
   }
 

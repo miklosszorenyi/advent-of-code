@@ -213,7 +213,7 @@ function collectGraph(map, objects = ['.']) {
 
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
-      if (objects.includes(map[y][x])) {
+      if (!objects || objects.includes(map[y][x])) {
         graph.push({
           x, y,
           type: map[y][x],
@@ -319,6 +319,56 @@ function combine(arrays) {
   return result;
 }
 
+function manhattanDistance(a, b) {
+  return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+}
+
+function manhattanPath(a, b) {
+  const { x: x1, y: y1 } = a;
+  const { x: x2, y: y2 } = b;
+
+  let path = [];
+  let x = x1;
+  let y = y1;
+
+  while (x !== x2) {
+    path.push([x, y]);
+    x += (x2 > x1) ? 1 : -1;
+  }
+
+  while (y !== y2) {
+    path.push([x, y]);
+    y += (y2 > y1) ? 1 : -1;
+  }
+
+  path.push([x2, y2]);
+
+  return path;
+}
+
+function bronKerbosch(R, P, X, graph, cliques) {
+  if (P.length === 0 && X.length === 0) {
+    cliques.push(R);
+    return;
+  }
+
+  for (let i = 0; i < P.length; i++) {
+    const node = P[i];
+    const neighbors = graph.get(node) || [];
+
+    bronKerbosch(
+      [...R, node],
+      P.filter(n => neighbors.has(n)),
+      X.filter(n => neighbors.has(n)),
+      graph,
+      cliques
+    );
+
+    P = P.filter(n => n !== node);
+    X = [...X, node];
+  }
+}
+
 module.exports = {
   DFS,
   Dijkstra,
@@ -328,4 +378,7 @@ module.exports = {
   combine,
   variations,
   generatePermutations,
+  manhattanDistance,
+  manhattanPath,
+  bronKerbosch,
 };

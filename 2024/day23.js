@@ -1,4 +1,5 @@
-const { uniq, flatMap } = require("lodash");
+const { uniq, flatMap, intersection } = require("lodash");
+const { generatePermutations, collectGraph, DFS, bronKerbosch } = require("./libs");
 
 const test_input = [
   'kh-tc', 'qp-kh', 'de-cg', 'ka-co', 'yn-aq', 'qp-ub', 'cg-tb', 'vc-aq', 'tb-ka', 'wh-tc', 'yn-cg',
@@ -3433,18 +3434,39 @@ function part1(input) {
   return [uniqSortedFiltered(combinedConnections), usedPairs];
 }
 
-function part2(input, usedPairs) {
-  const cos = {};
-  usedPairs.forEach(pair => {
-    pair.forEach(p => {
-      cos[p] = cos[p] ? cos[p] + 1 : 1;
-    });
-  });
-
-  console.log(uniqSortedFiltered(usedPairs));
-
-
-  return connections;
+function findPair(input, reqPair) {
+  const pairs = [];
+  for (let pair of input) {
+    if (pair.includes(reqPair[0]) || pair.includes(reqPair[1])) {
+      pairs.push(pair);
+    }
+  }
+  return pairs;
 }
 
-console.log(part2(test_input, part1(test_input)));
+function groupPairs(input) {
+
+
+}
+
+function part2(input) {
+  const graph = new Map();
+
+  for (const [a, b] of input) {
+    if (!graph.has(a)) graph.set(a, new Set());
+    if (!graph.has(b)) graph.set(b, new Set());
+    graph.get(a).add(b);
+    graph.get(b).add(a);
+  }
+
+  const P = Array.from(graph.keys());
+  const R = [];
+  const X = [];
+  const cliques = [];
+
+  bronKerbosch(R, P, X, graph, cliques);
+
+  return cliques.sort((a, b) => a.length > b.length ? -1 : 1).at(0).sort().join(',');
+}
+
+console.log(part2(final_input));
