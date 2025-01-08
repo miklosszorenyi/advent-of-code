@@ -445,6 +445,42 @@ function part1(input) {
 }
 
 function part2(input) {
+  const corruptedWires = [];
+  const firstZ = 'z00';
+  const lastZ = 'z45';
+
+  for (let wire of input.wires) {
+    if (/^z[0-9]+$/.test(wire.target) && wire.op !== "XOR" && wire.target !== firstZ) {
+      corruptedWires.push(wire.target);
+    }
+
+    if (
+      wire.op === "XOR"
+      && /^[xyz][0-9]+$/.test(wire.first)
+      && /^[xyz][0-9]+$/.test(wire.second)
+      && /^[xyz][0-9]+$/.test(wire.target)
+    ) {
+      corruptedWires.push(wire.target);
+    }
+
+    if (wire.op === "AND" && wire.first !== "x00" && wire.second !== "x00") {
+      for (let subwire of input.wires) {
+        if ((wire.target === subwire.first || wire.target === subwire.second) && subwire.op !== "OR") {
+          corruptedWires.push(wire.target);
+        }
+      }
+    }
+
+    if (wire.op === "XOR") {
+      for (let subwire of input.wires) {
+        if ((wire.target === subwire.first || wire.target === subwire.second) && subwire.op === "OR") {
+          corruptedWires.push(wire.target);
+        }
+      }
+    }
+  }
+
+  return corruptedWires.filter(wire => wire !== lastZ).sort().join(',');
 }
 
-console.log(part1(final_input));
+console.log(part2(final_input));
